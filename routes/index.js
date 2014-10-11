@@ -23,7 +23,7 @@ db.once('open', function callback () {
 
 	router.post('/',function(request,response) {
  	
-		var user = new User({ name: request.param('name') })
+		var user = new User({ name: request.param('username') })
 
     user.save()
 
@@ -31,5 +31,7 @@ db.once('open', function callback () {
 
 	});
 });
+
+
 
 module.exports = router;

@@ -30,5 +30,19 @@ describe('home page', function() {
     browser.assert.attribute('form','method','post');
   });
 
+  it('the user can sign up', function() {
+    
+    browser.fill('email','albert@test.es').
+    fill('username', 'byverdu').
+    fill('password' ,'s3cr3t').
+    fill('pswd_conf','s3cr3t').
+    pressButton('Submit',function(){
+      
+      browser.assert.success();
+    })
+      
+      assert.equal(browser.location.pathname, "/");
+  });
+
 
 });

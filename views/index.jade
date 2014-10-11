@@ -6,5 +6,8 @@ block content
   p Welcome to #{title}
 
   form(class="form sign_up",method="post", action="/")
-    input(type="text", name="name")
+    input(type="email",    name="email" , placeholder="Email")
+    input(type="text",     name="username" , placeholder="UserName")
+    input(type="password", name="password" , placeholder="Password")
+    input(type="password", name="pswd_conf" , placeholder="Password confirmation")
     button(type="submit") Submit
