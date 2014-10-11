@@ -10,7 +10,7 @@ var db = mongoose.connection;
 
 /* GET home page. */
 router.get('/', function(request, response) {
-  response.render('index', { title: 'Chiiter' });
+  response.render('index', { title: 'Chitter' });
   
 });
 

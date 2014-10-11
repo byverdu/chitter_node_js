@@ -4,7 +4,7 @@ var express      = require('express'),
     bodyParser   = require('body-parser'),    // Really needed for get request.param
     routes       = require('./routes/index'),
     users        = require('./routes/users');
-    
+
 
 var app          = express();
 
@@ -21,9 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/'     ,routes);
 app.use('/users',users );
 
-server = app.listen(8080, function(){
+app.listen(8080, function(){
 
-    console.log('Server details', server.address())
+    console.log('Server details', this.address())
 });
 
 
@@ -34,5 +34,5 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-
+module.exports = app; 
 

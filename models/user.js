@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
-var kittySchema = mongoose.Schema({
+var userSchema = mongoose.Schema({
     
     	name: String
 		})
 
-module.exports = mongoose.model('Kitten', kittySchema)
+module.exports = mongoose.model('User', userSchema)
 
 
