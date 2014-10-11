@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'test';
 var server = require('../app.js');
-var expect = require('chai').expect;
+var assert = require("assert");
 var Browser = require('zombie');
 
 
@@ -8,9 +8,9 @@ describe('home page', function() {
   var browser;
   
   before(function() {
-    this.server = server.listen(8080);
+    this.server = server.listen(3000);
     // initialize the browser using the same port as the test application
-    browser = new Browser({ site: 'http://0.0.0.0:8080' });
+    browser = new Browser({ site: 'http://0.0.0.0:3000' });
 
   });
 
@@ -24,8 +24,10 @@ describe('home page', function() {
   })
 
 
-  it('should show a welcome message', function(){
-    expect(browser.text('h1')).to.equal('Chitter');
+  it('should show a welcome message and a form', function(){
+    browser.assert.text('h1', 'Chitter');
+    browser.assert.element('form',1);
+    browser.assert.attribute('form','method','post');
   });
 
 
