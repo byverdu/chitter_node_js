@@ -23,7 +23,10 @@ db.once('open', function callback () {
 
 	router.post('/',function(request,response) {
  	
-		var user = new User({ name: request.param('username') })
+		var user = new User({ username:  request.param('username'),
+		                      email:     request.param('email'),
+		                      password:  request.param('password'),
+		                      pswd_conf: request.param('pswd_conf')  })
 
     user.save()
 
