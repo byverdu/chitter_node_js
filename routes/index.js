@@ -1,25 +1,35 @@
 var express = require('express');
-var router = express.Router();
+var mongoose = require('mongoose');
+var User   = require('../models/user')
 
-var  x;
+var router  = express.Router();
+
+mongoose.connect('mongodb://localhost/chitter' );
+
+var db = mongoose.connection;
 
 /* GET home page. */
 router.get('/', function(request, response) {
-  response.render('index', { title: 'Express' });
+  response.render('index', { title: 'Chiiter' });
   
-
-  console.log("Cookies: ", request.cookies)
-
 });
 
-router.post('/',function(request,response) {
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+    console.log('connection succeed')
+
+  // Saving on db
+
+	router.post('/',function(request,response) {
  	
- 	x = request.param('name')
+		var user = new User({ name: request.param('name') })
 
-	console.log(x,'lol')
+    user.save()
 
- 	response.render('users',{title: x })
+ 		response.render('users',{title: user.name})
 
+	});
 });
 
 module.exports = router;
